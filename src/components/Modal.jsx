@@ -1,0 +1,1 @@
+//dla zerowego salda,wylogowania
