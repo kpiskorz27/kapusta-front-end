@@ -2,7 +2,8 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL =
-  process.env.REACT_APP_API_BASE_URL || "https://http://localhost:3000";
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://goit-fs17-react-node-final-project-backend.vercel.app/";
 
 const token = {
   set(token) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3500",
+  baseURL: "https://goit-fs17-react-node-final-project-backend.vercel.app/",
   withCredentials: true,
 });
 
