@@ -1,0 +1,26 @@
+/* Expenses and Income Sections */
+
+.top-container {
+  display: grid;
+  margin: 16px 20px 32px 20px;
+}
+.main-page-container {
+  padding-bottom: 16px;
+}
+
+/* Tablet (768px and up) */
+@media screen and (min-width: 768px) {
+  .top-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 32px 32px 32px;
+  }
+  .main-page-container {
+    padding-bottom: 0px;
+  }
+}
+/*Desktop (1280px and up)*/
+
+@media screen and (min-width: 1280px) {
+}
