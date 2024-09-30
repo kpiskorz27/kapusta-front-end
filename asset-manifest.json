@@ -1,22 +1,42 @@
 {
   "files": {
-    "main.css": "/kapusta-front-end/static/css/main.0d65ad60.css",
-    "main.js": "/kapusta-front-end/static/js/main.da44387c.js",
+    "main.css": "/kapusta-front-end/static/css/main.96166b5e.css",
+    "main.js": "/kapusta-front-end/static/js/main.bb12d44b.js",
+    "static/css/533.16c3d54a.chunk.css": "/kapusta-front-end/static/css/533.16c3d54a.chunk.css",
+    "static/js/533.8302f38e.chunk.js": "/kapusta-front-end/static/js/533.8302f38e.chunk.js",
+    "static/js/264.d81d6ec7.chunk.js": "/kapusta-front-end/static/js/264.d81d6ec7.chunk.js",
     "static/media/symbol-defs.svg": "/kapusta-front-end/static/media/symbol-defs.6b0549b73791f2b888043a4dcfd012fc.svg",
+    "static/media/bottomDesktop.svg": "/kapusta-front-end/static/media/bottomDesktop.7d719bc3ecca6e327582.svg",
+    "static/media/topTablet.svg": "/kapusta-front-end/static/media/topTablet.d67fb0c23c0bc6595d41.svg",
+    "static/media/topCabages.svg": "/kapusta-front-end/static/media/topCabages.63133c5768fc553df8e0.svg",
     "static/media/reports.svg": "/kapusta-front-end/static/media/reports.71f52840b9609ceca8e98df9ff62774d.svg",
     "static/media/bgDeskKapusta.png": "/kapusta-front-end/static/media/bgDeskKapusta.3c521e1a9dee90b85702.png",
     "static/media/kapustaTab.svg": "/kapusta-front-end/static/media/kapustaTab.7806fc4162804f746dfd4d9efd53daad.svg",
+    "static/media/twoCabages.svg": "/kapusta-front-end/static/media/twoCabages.6a16094068293d8d4bb0.svg",
+    "static/media/oneCabage180.svg": "/kapusta-front-end/static/media/oneCabage180.e27a358eaecba61dab87.svg",
+    "static/media/googleLogo.svg": "/kapusta-front-end/static/media/googleLogo.86cc61447b5be25e30195ce26a98d6ea.svg",
+    "static/media/oneCabage.svg": "/kapusta-front-end/static/media/oneCabage.ddd57962cba897f938cc.svg",
+    "static/media/logo.svg": "/kapusta-front-end/static/media/logo.9a1219fa7b0c5ccef923ebbd77f9ee7b.svg",
+    "static/media/union.svg": "/kapusta-front-end/static/media/union.714abfed651ac9bb7511c49d7c27e4e9.svg",
     "static/media/calendar.svg": "/kapusta-front-end/static/media/calendar.00642a7478357e5745e77a6e51865b95.svg",
     "static/media/calculator.svg": "/kapusta-front-end/static/media/calculator.0a6d86bb1f5650e86c0153c1ffed71e6.svg",
     "static/media/deleteIcon.svg": "/kapusta-front-end/static/media/deleteIcon.077b35dd975e84140722db0f6d013b5f.svg",
+    "static/media/eye-blocked.svg": "/kapusta-front-end/static/media/eye-blocked.a87785f5094f275cd0c7d8c8776375e2.svg",
+    "static/media/eye.svg": "/kapusta-front-end/static/media/eye.6da749a9b64fa47839e76b65b0bd637b.svg",
     "index.html": "/kapusta-front-end/index.html",
+    "static/media/logout-mobile.svg": "/kapusta-front-end/static/media/logout-mobile.51fb5135cc6397ba13bbe39d96aac8f4.svg",
     "static/media/close.svg": "/kapusta-front-end/static/media/close.50a90113ebcaedd760b3c83338df2e28.svg",
+    "static/media/borderDesktop.svg": "/kapusta-front-end/static/media/borderDesktop.0a899f31f56fe9101b83.svg",
+    "static/media/borderMobile.svg": "/kapusta-front-end/static/media/borderMobile.84443502bb1029840078.svg",
+    "static/media/borderTablet.svg": "/kapusta-front-end/static/media/borderTablet.5829b22a4c0acc81fda5.svg",
     "static/media/arrow-bottom.svg": "/kapusta-front-end/static/media/arrow-bottom.d1e57e272057ace5873ebc080c85388a.svg",
-    "main.0d65ad60.css.map": "/kapusta-front-end/static/css/main.0d65ad60.css.map",
-    "main.da44387c.js.map": "/kapusta-front-end/static/js/main.da44387c.js.map"
+    "main.96166b5e.css.map": "/kapusta-front-end/static/css/main.96166b5e.css.map",
+    "main.bb12d44b.js.map": "/kapusta-front-end/static/js/main.bb12d44b.js.map",
+    "533.16c3d54a.chunk.css.map": "/kapusta-front-end/static/css/533.16c3d54a.chunk.css.map",
+    "533.8302f38e.chunk.js.map": "/kapusta-front-end/static/js/533.8302f38e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d65ad60.css",
-    "static/js/main.da44387c.js"
+    "static/css/main.96166b5e.css",
+    "static/js/main.bb12d44b.js"
   ]
 }
