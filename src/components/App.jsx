@@ -9,10 +9,10 @@ export const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="kapusta2_front-end/" element={<HomePage />} />
-        <Route path="kapusta2_front-end/income" element={<IncomePage />} />
-        <Route path="kapusta2_front-end/expenses" element={<ExpensesPage />} />
-        <Route path="kapusta2_front-end/report" element={<Report />} />
+        <Route path="kapusta-front-end/" element={<HomePage />} />
+        <Route path="kapusta-front-end/income" element={<IncomePage />} />
+        <Route path="kapusta-front-end/expenses" element={<ExpensesPage />} />
+        <Route path="kapusta-front-end/report" element={<Report />} />
       </Routes>
     </div>
   );
