@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/kapusta-front-end/static/css/main.0d65ad60.css",
-    "main.js": "/kapusta-front-end/static/js/main.714e7864.js",
-    "static/media/symbol-defs.svg": "/kapusta-front-end/static/media/symbol-defs.f5cb3aa7777289c43119708279432f99.svg",
-    "static/media/reports.svg": "/kapusta-front-end/static/media/reports.567065b7eac1c98730d496987d5d688c.svg",
+    "main.js": "/kapusta-front-end/static/js/main.da44387c.js",
+    "static/media/symbol-defs.svg": "/kapusta-front-end/static/media/symbol-defs.6b0549b73791f2b888043a4dcfd012fc.svg",
+    "static/media/reports.svg": "/kapusta-front-end/static/media/reports.71f52840b9609ceca8e98df9ff62774d.svg",
     "static/media/bgDeskKapusta.png": "/kapusta-front-end/static/media/bgDeskKapusta.3c521e1a9dee90b85702.png",
-    "static/media/kapustaTab.svg": "/kapusta-front-end/static/media/kapustaTab.a72993004324294402ab8e5247cddef8.svg",
-    "static/media/calendar.svg": "/kapusta-front-end/static/media/calendar.8d4bd822ea59fddfa11ed3a86d50eb38.svg",
-    "static/media/calculator.svg": "/kapusta-front-end/static/media/calculator.bd74ce3461a4518efe3d33f529d436cb.svg",
-    "static/media/deleteIcon.svg": "/kapusta-front-end/static/media/deleteIcon.e7b41b88b37f27c6f3177c8cdc870fce.svg",
+    "static/media/kapustaTab.svg": "/kapusta-front-end/static/media/kapustaTab.7806fc4162804f746dfd4d9efd53daad.svg",
+    "static/media/calendar.svg": "/kapusta-front-end/static/media/calendar.00642a7478357e5745e77a6e51865b95.svg",
+    "static/media/calculator.svg": "/kapusta-front-end/static/media/calculator.0a6d86bb1f5650e86c0153c1ffed71e6.svg",
+    "static/media/deleteIcon.svg": "/kapusta-front-end/static/media/deleteIcon.077b35dd975e84140722db0f6d013b5f.svg",
     "index.html": "/kapusta-front-end/index.html",
-    "static/media/close.svg": "/kapusta-front-end/static/media/close.725652eddfe0bd34d7c252763578a80c.svg",
-    "static/media/arrow-bottom.svg": "/kapusta-front-end/static/media/arrow-bottom.d0daa32725811f1fd9548377d47b8559.svg",
+    "static/media/close.svg": "/kapusta-front-end/static/media/close.50a90113ebcaedd760b3c83338df2e28.svg",
+    "static/media/arrow-bottom.svg": "/kapusta-front-end/static/media/arrow-bottom.d1e57e272057ace5873ebc080c85388a.svg",
     "main.0d65ad60.css.map": "/kapusta-front-end/static/css/main.0d65ad60.css.map",
-    "main.714e7864.js.map": "/kapusta-front-end/static/js/main.714e7864.js.map"
+    "main.da44387c.js.map": "/kapusta-front-end/static/js/main.da44387c.js.map"
   },
   "entrypoints": [
     "static/css/main.0d65ad60.css",
-    "static/js/main.714e7864.js"
+    "static/js/main.da44387c.js"
   ]
 }
