@@ -1,10 +1,19 @@
 {
   "files": {
-    "main.css": "/kapusta-front-end/static/css/main.96166b5e.css",
-    "main.js": "/kapusta-front-end/static/js/main.bb12d44b.js",
-    "static/css/533.16c3d54a.chunk.css": "/kapusta-front-end/static/css/533.16c3d54a.chunk.css",
-    "static/js/533.8302f38e.chunk.js": "/kapusta-front-end/static/js/533.8302f38e.chunk.js",
-    "static/js/264.d81d6ec7.chunk.js": "/kapusta-front-end/static/js/264.d81d6ec7.chunk.js",
+    "main.css": "/kapusta-front-end/static/css/main.8fe556eb.css",
+    "main.js": "/kapusta-front-end/static/js/main.ff7b4fa2.js",
+    "static/css/220.18ae2895.chunk.css": "/kapusta-front-end/static/css/220.18ae2895.chunk.css",
+    "static/js/220.dcdb5df8.chunk.js": "/kapusta-front-end/static/js/220.dcdb5df8.chunk.js",
+    "static/css/490.18ae2895.chunk.css": "/kapusta-front-end/static/css/490.18ae2895.chunk.css",
+    "static/js/490.5d41f8a1.chunk.js": "/kapusta-front-end/static/js/490.5d41f8a1.chunk.js",
+    "static/js/312.9aab55ba.chunk.js": "/kapusta-front-end/static/js/312.9aab55ba.chunk.js",
+    "static/js/182.081571cb.chunk.js": "/kapusta-front-end/static/js/182.081571cb.chunk.js",
+    "static/js/986.f66d3291.chunk.js": "/kapusta-front-end/static/js/986.f66d3291.chunk.js",
+    "static/js/136.d63ce04b.chunk.js": "/kapusta-front-end/static/js/136.d63ce04b.chunk.js",
+    "static/css/533.ca1b535b.chunk.css": "/kapusta-front-end/static/css/533.ca1b535b.chunk.css",
+    "static/js/533.dd367b21.chunk.js": "/kapusta-front-end/static/js/533.dd367b21.chunk.js",
+    "static/js/193.e5fffb3f.chunk.js": "/kapusta-front-end/static/js/193.e5fffb3f.chunk.js",
+    "static/js/621.6e673589.chunk.js": "/kapusta-front-end/static/js/621.6e673589.chunk.js",
     "static/media/symbol-defs.svg": "/kapusta-front-end/static/media/symbol-defs.6b0549b73791f2b888043a4dcfd012fc.svg",
     "static/media/bottomDesktop.svg": "/kapusta-front-end/static/media/bottomDesktop.7d719bc3ecca6e327582.svg",
     "static/media/topTablet.svg": "/kapusta-front-end/static/media/topTablet.d67fb0c23c0bc6595d41.svg",
@@ -30,13 +39,23 @@
     "static/media/borderMobile.svg": "/kapusta-front-end/static/media/borderMobile.84443502bb1029840078.svg",
     "static/media/borderTablet.svg": "/kapusta-front-end/static/media/borderTablet.5829b22a4c0acc81fda5.svg",
     "static/media/arrow-bottom.svg": "/kapusta-front-end/static/media/arrow-bottom.d1e57e272057ace5873ebc080c85388a.svg",
-    "main.96166b5e.css.map": "/kapusta-front-end/static/css/main.96166b5e.css.map",
-    "main.bb12d44b.js.map": "/kapusta-front-end/static/js/main.bb12d44b.js.map",
-    "533.16c3d54a.chunk.css.map": "/kapusta-front-end/static/css/533.16c3d54a.chunk.css.map",
-    "533.8302f38e.chunk.js.map": "/kapusta-front-end/static/js/533.8302f38e.chunk.js.map"
+    "main.8fe556eb.css.map": "/kapusta-front-end/static/css/main.8fe556eb.css.map",
+    "main.ff7b4fa2.js.map": "/kapusta-front-end/static/js/main.ff7b4fa2.js.map",
+    "220.18ae2895.chunk.css.map": "/kapusta-front-end/static/css/220.18ae2895.chunk.css.map",
+    "220.dcdb5df8.chunk.js.map": "/kapusta-front-end/static/js/220.dcdb5df8.chunk.js.map",
+    "490.18ae2895.chunk.css.map": "/kapusta-front-end/static/css/490.18ae2895.chunk.css.map",
+    "490.5d41f8a1.chunk.js.map": "/kapusta-front-end/static/js/490.5d41f8a1.chunk.js.map",
+    "312.9aab55ba.chunk.js.map": "/kapusta-front-end/static/js/312.9aab55ba.chunk.js.map",
+    "182.081571cb.chunk.js.map": "/kapusta-front-end/static/js/182.081571cb.chunk.js.map",
+    "986.f66d3291.chunk.js.map": "/kapusta-front-end/static/js/986.f66d3291.chunk.js.map",
+    "136.d63ce04b.chunk.js.map": "/kapusta-front-end/static/js/136.d63ce04b.chunk.js.map",
+    "533.ca1b535b.chunk.css.map": "/kapusta-front-end/static/css/533.ca1b535b.chunk.css.map",
+    "533.dd367b21.chunk.js.map": "/kapusta-front-end/static/js/533.dd367b21.chunk.js.map",
+    "193.e5fffb3f.chunk.js.map": "/kapusta-front-end/static/js/193.e5fffb3f.chunk.js.map",
+    "621.6e673589.chunk.js.map": "/kapusta-front-end/static/js/621.6e673589.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.96166b5e.css",
-    "static/js/main.bb12d44b.js"
+    "static/css/main.8fe556eb.css",
+    "static/js/main.ff7b4fa2.js"
   ]
 }

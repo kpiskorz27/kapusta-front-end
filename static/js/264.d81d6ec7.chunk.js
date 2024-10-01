@@ -1,1 +1,0 @@
-(self.webpackChunkkapusta_front_end=self.webpackChunkkapusta_front_end||[]).push([[264],{2264:()=>{}}]);
