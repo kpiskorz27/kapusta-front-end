@@ -1,29 +1,52 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import { StyledTabsMobile, StyledTabsDesktop } from "./Styles";
 
-export const TransactionTabsMobile = () => {
+export const TransactionTabsMobile = ({ setActiveTab }) => {
   return (
     <StyledTabsMobile>
-      <Link to="/home/expenses" className="TabMobile">
+      <button
+        className="TabMobile"
+        onClick={() => {
+          console.log("Setting to expenses");
+          setActiveTab("expenses");
+        }}
+      >
         expenses
-      </Link>
-      <Link to="/home/income" className="TabMobile">
+      </button>
+      <button
+        className="TabMobile"
+        onClick={() => {
+          console.log("Setting to income");
+          setActiveTab("income");
+        }}
+      >
         income
-      </Link>
+      </button>
     </StyledTabsMobile>
   );
 };
 
-export const TransactionTabsDesktop = () => {
+export const TransactionTabsDesktop = ({ setActiveTab }) => {
   return (
     <StyledTabsDesktop>
-      <NavLink to="expenses" className="TabDesktop">
+      <button
+        className="TabDesktop"
+        onClick={() => {
+          console.log("Setting to expenses");
+          setActiveTab("expenses");
+        }}
+      >
         expenses
-      </NavLink>
-      <NavLink to="income" className="TabDesktop">
+      </button>
+      <button
+        className="TabDesktop"
+        onClick={() => {
+          console.log("Setting to income");
+          setActiveTab("income");
+        }}
+      >
         income
-      </NavLink>
+      </button>
     </StyledTabsDesktop>
   );
 };

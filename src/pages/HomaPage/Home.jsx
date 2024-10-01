@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useMatchMedia } from "../../hooks/use-match-media";
 import GrayBg from "../../components/GrayBg";
 import ReportsBtn from "../../components/Buttons/ReportsBtn/ReportsBtn";
@@ -12,10 +12,26 @@ import {
   TransactionTabsDesktop,
 } from "../../components/TransactionTabs/TransactionTabs";
 
+import IncomePage from "../IncomePage/IncomePage";
+import ExpensesPage from "../ExpensesPage/Expense";
+
 export default function HomePage() {
   const [startDate, setStartDate] = useState(new Date());
   const { isMobile } = useMatchMedia();
   const location = useLocation();
+
+  const [activeTab, setActiveTab] = useState("income");
+
+  const renderActiveTab = () => {
+    switch (activeTab) {
+      case "income":
+        return <IncomePage />;
+      case "expenses":
+        return <ExpensesPage />;
+      default:
+        return <IncomePage />;
+    }
+  };
 
   return (
     <>
@@ -31,9 +47,9 @@ export default function HomePage() {
             <DateSelection startDate={startDate} setStartDate={setStartDate} />
           </div>
         )}
-        {isMobile && <TransactionTabsMobile />}
-        {!isMobile && <TransactionTabsDesktop />}
-        <Outlet />
+        {isMobile && <TransactionTabsMobile setActiveTab={setActiveTab} />}
+        {!isMobile && <TransactionTabsDesktop setActiveTab={setActiveTab} />}
+        {renderActiveTab()}
         {isMobile && <TransactionsList />}
       </StyledHomePage>
     </>

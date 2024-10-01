@@ -1,4 +1,3 @@
-// src/components/App.jsx
 import React, { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -47,9 +46,9 @@ export const App = () => {
         />
         <Route element={<PrivateRoute />}>
           <Route element={<BackgroundShared />}>
-            <Route path="/home/*" element={<HomePage />} />
-            <Route path="/income" element={<IncomePage />} />
-            <Route path="/expenses" element={<ExpensesPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/home/income" element={<IncomePage />} />
+            <Route path="/home/expenses" element={<ExpensesPage />} />
             <Route path="/reports" element={<Report />} />
           </Route>
         </Route>
