@@ -1,16 +1,17 @@
-// src/redux/slices/transactionSlice.js
+// src/redux/slices/transactionSliceK.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import reportAPI from "../../api/reportApi";
 
-// Fetch transactions based on the selected month
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
-  async (monthYear, thunkAPI) => {
+  async (monthYear, { rejectWithValue }) => {
     try {
       const response = await reportAPI.getTransactionsForMonth(monthYear);
-      return response.data.data; // Ensure you're accessing the correct 'data' structure
+      return response.data.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response?.data || "Failed to fetch transactions"
+      );
     }
   }
 );
@@ -19,7 +20,8 @@ const transactionSlice = createSlice({
   name: "transactions",
   initialState: {
     income: { total: 0, categories: [] },
-    expenses: { total: 0, categories: [] },
+    expenses: [],
+    monthStats: {},
     loading: false,
     error: null,
   },
@@ -32,9 +34,8 @@ const transactionSlice = createSlice({
       })
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.loading = false;
-        state.income = action.payload.incomes; // This should match backend data structure
-        state.expenses = action.payload.expenses; // Make sure it matches the correct backend data
-        state.categories = action.payload.categories; // Add categories with icons to state
+        state.expenses = action.payload.expenses || [];
+        state.monthStats = action.payload.monthStats || {};
       })
       .addCase(fetchTransactions.rejected, (state, action) => {
         state.loading = false;

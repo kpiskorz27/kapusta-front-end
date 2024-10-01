@@ -55,7 +55,8 @@ const CurrentPeriod = ({ currentPeriod, setCurrentPeriod, onPeriodChange }) => {
           </svg>
         </span>
         <span className="month-name">
-          {months[currentPeriod.month]} {currentPeriod.year}
+          {months[currentPeriod.month]}
+          {/* {currentPeriod.year} */}
         </span>
         <span className="arrow" onClick={() => handleMonthChange(1)}>
           <svg className="icon" width="18px" height="12px">

@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sprite from "../assets/images/symbol-defs.svg";
 
-const Expenses = ({ categories = [] }) => {
+const Expenses = ({ categories = {}, onCategoryClick }) => {
   const [activeCategory, setActiveCategory] = useState(null);
+
+  const sortedCategories = Object.entries(categories)
+    .map(([key, value]) => ({
+      name: key,
+      amount: value.total,
+    }))
+    .sort((a, b) => b.amount - a.amount);
+
+  useEffect(() => {
+    console.log("Processed Expense Categories (sorted):", sortedCategories);
+  }, [sortedCategories]);
 
   const handleCategoryClick = (categoryName) => {
     setActiveCategory((prevCategory) =>
       prevCategory === categoryName ? null : categoryName
     );
-  };
 
-  const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
+    const categoryData = categories[categoryName];
+    onCategoryClick(categoryName, categoryData);
+  };
 
   if (!sortedCategories || sortedCategories.length === 0) {
     return (
@@ -41,7 +53,7 @@ const Expenses = ({ categories = [] }) => {
                 width="56px"
                 height="56px"
               >
-                <use href={`${sprite}#icon-${category.icon}`}></use>
+                <use href={`${sprite}#icon-${category.name}`}></use>
               </svg>
             </div>
             <span className="category-name">{category.name}</span>

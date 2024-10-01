@@ -3,17 +3,15 @@ import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { useMediaQuery } from "react-responsive";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { Chart } from "chart.js"; // Import the Chart object to register plugins
+import { Chart } from "chart.js";
 
-// Register the plugin
 Chart.register(ChartDataLabels);
 
 const CategoryChart = ({ categoryName, data }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
-  // Process data to extract descriptions and amounts
   const processedData = Object.entries(data)
-    .filter(([key]) => key !== "total") // Exclude the 'total' key from the dataset
+    .filter(([key]) => key !== "total")
     .map(([description, amount]) => ({
       description,
       amount,
@@ -26,59 +24,55 @@ const CategoryChart = ({ categoryName, data }) => {
     );
   }, [processedData]);
 
-  // Define a function to alternate the colors based on index
   const getBackgroundColor = (index) => {
-    return index % 2 === 0 ? "#FF751D" : "#FFDAC0"; // Alternate colors
+    return index % 2 === 0 ? "#FF751D" : "#FFDAC0";
   };
 
-  // Generate background colors for the chart data
   const backgroundColors = processedData.map((_, index) =>
     getBackgroundColor(index)
   );
 
-  // Prepare vertical and horizontal chart data using processed descriptions and amounts
   const chartDataVertical = {
-    labels: processedData.map((item) => item.description), // Use full descriptions
+    labels: processedData.map((item) => item.description),
     datasets: [
       {
-        data: processedData.map((item) => item.amount), // Use the amounts from the processed data
-        backgroundColor: backgroundColors, // Apply dynamic background colors
-        barThickness: 38, // Fixed bar thickness for desktop and tablet
-        borderRadius: 10, // Rounded corners
+        data: processedData.map((item) => item.amount),
+        backgroundColor: backgroundColors,
+        barThickness: 38,
+        borderRadius: 10,
       },
     ],
   };
 
   const chartDataHorizontal = {
-    labels: processedData.map((item) => item.description), // Use descriptions for labels
+    labels: processedData.map((item) => item.description),
     datasets: [
       {
-        data: processedData.map((item) => item.amount), // Use amounts for the data
-        backgroundColor: backgroundColors, // Apply dynamic background colors
-        barThickness: 15, // Thinner bar for mobile horizontal layout
-        borderRadius: 10, // Rounded corners
+        data: processedData.map((item) => item.amount),
+        backgroundColor: backgroundColors,
+        barThickness: 15,
+        borderRadius: 10,
       },
     ],
   };
 
-  // Vertical chart options with the y scale hidden and amounts at the top of bars
   const optionsVertical = {
     maintainAspectRatio: false,
-    indexAxis: "x", // Vertical chart for larger screens
+    indexAxis: "x",
     responsive: true,
     layout: {
       padding: {
         top: 50,
-        bottom: 13, // Increase top padding to prevent labels from clipping
+        bottom: 13,
       },
     },
     scales: {
       x: {
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         border: {
-          display: false, // Hide the axis baseline (floor)
+          display: false,
         },
         ticks: {
           color: "#52555f",
@@ -89,29 +83,29 @@ const CategoryChart = ({ categoryName, data }) => {
         },
       },
       y: {
-        display: false, // Hide the y-axis
+        display: false,
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         border: {
-          display: false, // Hide the axis baseline
+          display: false,
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Hide the label/legend
+        display: false,
       },
       tooltip: {
-        enabled: false, // Disable tooltips
+        enabled: false,
       },
       datalabels: {
-        display: true, // Show the amount on top of each bar
+        display: true,
         anchor: "end",
         align: "end",
-        offset: 10, // Add space between the label and the bar
-        clip: false, // Prevent the label from being clipped
-        formatter: (value) => `${value} PLN`, // Format the amount
+        offset: 10,
+        clip: false,
+        formatter: (value) => `${value} PLN`,
         font: {
           size: 12,
         },
@@ -120,25 +114,24 @@ const CategoryChart = ({ categoryName, data }) => {
     },
   };
 
-  // Horizontal chart options for mobile with descriptions above the bars
   const optionsHorizontal = {
     maintainAspectRatio: false,
-    indexAxis: "y", // Horizontal chart for mobile
+    indexAxis: "y",
     responsive: true,
     layout: {
       padding: {
-        top: 20, // Add more padding to ensure descriptions have space above the bars
-        right: 40, // Add padding to the right for better appearance
+        top: 20,
+        right: 40,
       },
     },
     scales: {
       x: {
-        display: false, // Hide the x scale on mobile
+        display: false,
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         border: {
-          display: false, // Hide the axis baseline (floor)
+          display: false,
         },
       },
       y: {
@@ -149,27 +142,27 @@ const CategoryChart = ({ categoryName, data }) => {
           },
         },
         grid: {
-          display: false, // Remove grid lines
+          display: false,
         },
         border: {
-          display: false, // Hide the axis baseline
+          display: false,
         },
       },
     },
     plugins: {
       legend: {
-        display: false, // Hide the label/legend
+        display: false,
       },
       tooltip: {
-        enabled: false, // Disable tooltips
+        enabled: false,
       },
       datalabels: {
-        display: true, // Show the amount on top of each bar
+        display: true,
         anchor: "end",
-        align: "end", // Align amounts at the end of the bars
+        align: "end",
         offset: 5,
-        clip: false, // Ensure labels do not go out of the container
-        formatter: (value) => `${value} PLN`, // Keep only the amount on the bars
+        clip: false,
+        formatter: (value) => `${value} PLN`,
         font: {
           size: 12,
         },
@@ -182,7 +175,6 @@ const CategoryChart = ({ categoryName, data }) => {
     <div className="category-chart-container">
       <div className="category-chart-wrapper">
         <div className="category-chart">
-          {/* For non-mobile screens, display vertical chart */}
           {!isMobile && (
             <Bar
               options={optionsVertical}
@@ -191,7 +183,6 @@ const CategoryChart = ({ categoryName, data }) => {
             />
           )}
 
-          {/* For mobile screens, display horizontal chart */}
           {isMobile && (
             <Bar
               options={optionsHorizontal}

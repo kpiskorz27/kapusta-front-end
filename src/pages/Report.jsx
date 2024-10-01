@@ -8,26 +8,36 @@ import Balance from "../components/Balance";
 import Expenses from "../components/Expenses";
 import Income from "../components/Income";
 import ReportCategorySwitcher from "../components/ReportCategorySwitcher";
-// import ReportGraph from "../components/ReportGraph";
+import CategoryChart from "../components/CategoryChart";
 
 const Report = () => {
   const dispatch = useDispatch();
   const { income, expenses } = useSelector((state) => state.transactions);
+
   const [currentPeriod, setCurrentPeriod] = useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
+
   const [formattedMonthYear, setFormattedMonthYear] = useState(
     `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(
       2,
       "0"
     )}`
   );
+
   const [view, setView] = useState("expenses");
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchTransactions(formattedMonthYear));
   }, [dispatch, formattedMonthYear]);
+
+  const handleCategoryClick = (categoryName, data) => {
+    setActiveCategory(categoryName);
+    setChartData(data);
+  };
 
   return (
     <div className="report-container">
@@ -40,6 +50,7 @@ const Report = () => {
           onPeriodChange={setFormattedMonthYear}
         />
       </div>
+
       <BudgetSummary
         income={income?.incomeTotal}
         expenses={expenses?.expenseTotal}
@@ -49,13 +60,25 @@ const Report = () => {
         <ReportCategorySwitcher view={view} setView={setView} />
 
         {view === "expenses" && (
-          <Expenses categories={expenses?.expensesData || []} type="expense" />
+          <Expenses
+            categories={expenses?.expensesData || {}}
+            onCategoryClick={handleCategoryClick}
+          />
         )}
+
         {view === "income" && (
-          <Income categories={income?.incomesData || []} type="income" />
+          <Income
+            categories={income?.incomesData || {}}
+            onCategoryClick={handleCategoryClick}
+          />
         )}
       </div>
-      {/* <ReportGraph /> */}
+
+      <div className="chart-section">
+        {activeCategory && (
+          <CategoryChart categoryName={activeCategory} data={chartData} />
+        )}
+      </div>
     </div>
   );
 };

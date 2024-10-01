@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sprite from "../assets/images/symbol-defs.svg";
 
-const Income = ({ categories = [] }) => {
-  // State to keep track of the active category
+const Income = ({ categories = {}, onCategoryClick }) => {
   const [activeCategory, setActiveCategory] = useState(null);
 
+  const sortedCategories = Object.entries(categories)
+    .map(([key, value]) => ({
+      name: key,
+      amount: value.total,
+    }))
+    .sort((a, b) => b.amount - a.amount);
+
+  useEffect(() => {
+    console.log("Processed Income Categories (sorted):", sortedCategories);
+  }, [sortedCategories]);
+
   const handleCategoryClick = (categoryName) => {
-    // Toggle the category, making it active or deactivating it
     setActiveCategory((prevCategory) =>
       prevCategory === categoryName ? null : categoryName
     );
-  };
 
-  // Sort categories by amount (descending)
-  const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
+    const categoryData = categories[categoryName];
+    onCategoryClick(categoryName, categoryData);
+  };
 
   if (!sortedCategories || sortedCategories.length === 0) {
     return (
@@ -44,7 +53,7 @@ const Income = ({ categories = [] }) => {
                 width="56px"
                 height="56px"
               >
-                <use href={`${sprite}#icon-${category.icon}`}></use>
+                <use href={`${sprite}#icon-${category.name}`}></use>
               </svg>
             </div>
             <span className="category-name">{category.name}</span>
