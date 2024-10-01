@@ -1,16 +1,29 @@
-// src/redux/slices/transactionSliceK.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import reportAPI from "../../api/reportApi";
+import authOperations from "./authOperations";
 
 export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
-  async (monthYear, { rejectWithValue }) => {
+  async (monthYear, { rejectWithValue, dispatch }) => {
     try {
       const response = await reportAPI.getTransactionsForMonth(monthYear);
       return response.data.data;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        try {
+          await dispatch(authOperations.refreshUser());
+
+          const retryResponse = await reportAPI.getTransactionsForMonth(
+            monthYear
+          );
+          return retryResponse.data.data;
+        } catch (refreshError) {
+          return rejectWithValue("Session expired. Please log in again.");
+        }
+      }
+
       return rejectWithValue(
-        error.response?.data || "Failed to fetch transactions"
+        error.response?.data || "An error occurred while fetching transactions."
       );
     }
   }
@@ -20,8 +33,7 @@ const transactionSlice = createSlice({
   name: "transactions",
   initialState: {
     income: { total: 0, categories: [] },
-    expenses: [],
-    monthStats: {},
+    expenses: { total: 0, categories: [] },
     loading: false,
     error: null,
   },
@@ -34,8 +46,9 @@ const transactionSlice = createSlice({
       })
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.loading = false;
-        state.expenses = action.payload.expenses || [];
-        state.monthStats = action.payload.monthStats || {};
+        state.income = action.payload.incomes;
+        state.expenses = action.payload.expenses;
+        state.categories = action.payload.categories;
       })
       .addCase(fetchTransactions.rejected, (state, action) => {
         state.loading = false;
