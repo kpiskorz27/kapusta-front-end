@@ -1,57 +1,81 @@
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { Report } from "notiflix/build/notiflix-report-aio";
-
-// import {
-//   loginAPI,
-//   logoutAPI,
-//   setAuthHeader,
-//   clearAuthHeader,
-//   fullUserInfoAPI,
-// } from "../../services/apiAuth";
-
-// // Login Thunk
-// export const logIn = createAsyncThunk(
-//   "auth/login",
-//   async (credentials, thunkAPI) => {
-//     try {
-//       const data = await loginAPI(credentials);
-//       setAuthHeader(data.accessToken);
-
-//       return data;
-//     } catch (error) {
-//       if (error.response.status === 403) {
-//         Report.failure("Email or Password is wrong.");
-//       }
-
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-// // Logout Thunk
-// export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-//   try {
-//     await logoutAPI();
-//     clearAuthHeader();
-//   } catch (error) {
-//     thunkAPI.rejectWithValue(error.message);
-//   }
-// });
-// // Refresh user Thunk
-// export const refreshUser = createAsyncThunk(
-//   "auth/refreshUser",
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     setAuthHeader(persistedToken);
-//     if (!persistedToken) {
-//       return thunkAPI.rejectWithValue("немає токену");
-//     }
-//     try {
-//       const data = await fullUserInfoAPI();
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+export const addIncome = createAsyncThunk(
+  "transactions/addIncome",
+  async (value, thunkAPI) => {
+    try {
+      const { data } = await axios.post("/api/income", value);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getIncome = createAsyncThunk(
+  "transactions/getIncome",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/api/income");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const addExpense = createAsyncThunk(
+  "transactions/addExpense",
+  async (expense, thunkAPI) => {
+    try {
+      const { data } = await axios.post("/api/expenses", expense);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const updateBalance = createAsyncThunk(
+  "transactions/updateBalance",
+  async (value, thunkAPI) => {
+    try {
+      const { data } = await axios.patch("/api/balance", { balance: value });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getAllTransactions = createAsyncThunk(
+  "transactions/getAllTransactions",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/api/transactions");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteTransaction = createAsyncThunk(
+  "transactions/deleteTransaction",
+  async (id, thunkAPI) => {
+    try {
+      const { data: newBalance } = await axios.delete(`/api/expenses/${id}`);
+      return { newBalance, id };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getExpenses = createAsyncThunk(
+  "auth/getExpenses",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get("/api/expenses");
+      console.log("Expenses fetched from API: ", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching expenses: ", error);
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
