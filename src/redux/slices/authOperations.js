@@ -61,14 +61,14 @@ const refreshUser = createAsyncThunk(
     const state = getState();
     const refreshToken = state.auth.refreshToken;
     const sid = state.auth.sid;
-
     if (!refreshToken || !sid) {
       return rejectWithValue("No refresh token available");
     }
-
-    token.set(refreshToken);
     try {
-      const response = await axiosInstance.post("/auth/refresh", { sid });
+      const response = await axiosInstance.post("/auth/refresh", {
+        sid,
+        refreshToken,
+      });
       const { newAccessToken, newRefreshToken } = response.data.data;
       token.set(newAccessToken);
       return { accessToken: newAccessToken, refreshToken: newRefreshToken };
