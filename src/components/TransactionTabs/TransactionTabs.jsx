@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { StyledTabsMobile, StyledTabsDesktop } from './Styles';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import { StyledTabsMobile, StyledTabsDesktop } from "./Styles";
 
 export const TransactionTabsMobile = () => {
   return (
     <StyledTabsMobile>
-      <Link to="/expenses" className="TabMobile">
+      <Link to="/home/expenses" className="TabMobile">
         expenses
       </Link>
-      <Link to="/income" className="TabMobile">
+      <Link to="/home/income" className="TabMobile">
         income
       </Link>
     </StyledTabsMobile>

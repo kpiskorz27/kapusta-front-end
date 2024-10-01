@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import authSelectors from '../redux/slices/authSelectors';
-import authOperations from '../redux/slices/authOperations';
-import KapustaLogo from '../images/logo.svg';
-import UserMenu from './UserMenu';
-import LogOutModal from './ModalLogOut';
-import s from '../assets/styles/Header.module.css';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import authSelectors from "../redux/slices/authSelectors";
+import authOperations from "../redux/slices/authOperations";
+import KapustaLogo from "../images/logo.svg";
+import UserMenu from "./UserMenu";
+import LogOutModal from "./ModalLogOut";
+import s from "../assets/styles/Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,14 @@ const Header = () => {
   const hideModal = () => setModalVisible(false);
 
   const handleLogout = () => {
-    dispatch(authOperations.logOut());
-    setModalVisible(false);
+    dispatch(authOperations.logOut())
+      .unwrap()
+      .then(() => {
+        setModalVisible(false);
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
   };
 
   return (

@@ -1,9 +1,14 @@
+// src/redux/slices/authOperations.js
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+// Ustawienie bazowego URL dla Axios
 axios.defaults.baseURL =
   process.env.REACT_APP_API_BASE_URL ||
   "https://goit-fs17-react-node-final-project-backend.vercel.app/";
+
+// Ustawienie, aby Axios wysyłał ciasteczka z każdym żądaniem
+axios.defaults.withCredentials = true;
 
 const token = {
   set(token) {
@@ -25,7 +30,7 @@ const register = createAsyncThunk(
       return { accessToken, refreshToken, sid, userData };
     } catch (error) {
       return rejectWithValue(
-        error.response.data.message || "Registration failed"
+        error.response?.data?.message || "Registration failed"
       );
     }
   }
@@ -40,19 +45,19 @@ const logIn = createAsyncThunk(
       token.set(accessToken);
       return { accessToken, refreshToken, sid, userData };
     } catch (error) {
-      return rejectWithValue(error.response.data.message || "Login failed");
+      return rejectWithValue(error.response?.data?.message || "Login failed");
     }
   }
 );
 
 const logOut = createAsyncThunk(
   "auth/logout",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       await axios.post("/auth/logout");
       token.unset();
     } catch (error) {
-      return rejectWithValue(error.response.data.message || "Logout failed");
+      return rejectWithValue(error.response?.data?.message || "Logout failed");
     }
   }
 );
@@ -76,7 +81,7 @@ const refreshUser = createAsyncThunk(
       return { accessToken: newAccessToken, refreshToken: newRefreshToken };
     } catch (error) {
       return rejectWithValue(
-        error.response.data.message || "Session refresh failed"
+        error.response?.data?.message || "Session refresh failed"
       );
     }
   }
