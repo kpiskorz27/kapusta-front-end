@@ -1,21 +1,14 @@
-// src/redux/slices/authOperations.js
-import axios from "axios";
+import axiosInstance from "../../api/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-// Ustawienie bazowego URL dla Axios
-axios.defaults.baseURL =
-  process.env.REACT_APP_API_BASE_URL ||
-  "https://goit-fs17-react-node-final-project-backend.vercel.app/";
-
-// Ustawienie, aby Axios wysyłał ciasteczka z każdym żądaniem
-axios.defaults.withCredentials = true;
 
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    localStorage.setItem("token", token);
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    delete axios.defaults.headers.common.Authorization;
+    localStorage.removeItem("token");
+    delete axiosInstance.defaults.headers.common.Authorization;
   },
 };
 
@@ -23,8 +16,8 @@ const register = createAsyncThunk(
   "auth/register",
   async (credentials, { rejectWithValue }) => {
     try {
-      await axios.post("/auth/register", credentials);
-      const response = await axios.post("/auth/login", credentials);
+      await axiosInstance.post("/auth/register", credentials);
+      const response = await axiosInstance.post("/auth/login", credentials);
       const { accessToken, refreshToken, sid, userData } = response.data.data;
       token.set(accessToken);
       return { accessToken, refreshToken, sid, userData };
@@ -40,7 +33,7 @@ const logIn = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post("/auth/login", credentials);
+      const response = await axiosInstance.post("/auth/login", credentials);
       const { accessToken, refreshToken, sid, userData } = response.data.data;
       token.set(accessToken);
       return { accessToken, refreshToken, sid, userData };
@@ -54,7 +47,7 @@ const logOut = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post("/auth/logout");
+      await axiosInstance.post("/auth/logout");
       token.unset();
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Logout failed");
@@ -75,7 +68,7 @@ const refreshUser = createAsyncThunk(
 
     token.set(refreshToken);
     try {
-      const response = await axios.post("/auth/refresh", { sid });
+      const response = await axiosInstance.post("/auth/refresh", { sid });
       const { newAccessToken, newRefreshToken } = response.data.data;
       token.set(newAccessToken);
       return { accessToken: newAccessToken, refreshToken: newRefreshToken };
